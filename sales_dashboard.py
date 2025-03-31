@@ -179,11 +179,11 @@ def load_data(file_path=None):
                 # 检查是否是FileUploader对象还是字符串路径
                 if hasattr(file_path, 'read'):
                     # 是上传的文件对象
-                    df = pd.read_excel(file_path)
+                    df = pd.read_excel(file_path, engine='openpyxl')
                     st.sidebar.success(f"文件加载成功！")
                 else:
                     # 是文件路径字符串
-                    df = pd.read_excel(file_path)
+                    df = pd.read_excel(file_path, engine='openpyxl')
             except Exception as e:
                 st.error(f"文件加载失败: {str(e)}。使用示例数据进行演示。")
                 df = load_sample_data()
